@@ -113,6 +113,16 @@
          </script>
     </HEAD>
     <body background="images/bg.jpg">
+        <?php
+        $log_path = 'log.txt';
+        $user_ip = getenv(REMOTE_ADDR);
+        $user_browser = getenv(HTTP_USER_AGENT);
+        $curent_time = date("ymd H:i:s");
+        $log_string = "$user_ip|$user_browser|$curent_time|\r\n";
+        $file = fopen($log_path,"a");
+        fwrite($file, $log_string, strlen($log_string));
+        fclose($file);
+        ?>
         <table border="1" align="center" cellpadding="10">
             <tr>
                 <td background="images/bg-3.jpg"  colspan="2" heigh="150" align="right" hspace="5">
